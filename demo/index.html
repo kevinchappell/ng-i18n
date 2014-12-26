@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="description" content="ng-i18n : A module for easy internationalization of AngularJS webapps.">
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/demo.css">
+  <title>ng-i18n | {{'page.title' | i18n}}</title>
+  <script type="text/javascript">
+  var switchTo5x = true;
+  </script>
+  <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">
+  stLight.options({
+    publisher: "ee8fc1cb-2a3e-4afc-9a71-a24d14fb9f86",
+    doNotHash: false,
+    doNotCopy: false,
+    hashAddressBar: false
+  });
+  </script>
+</head>
+
+<body ng-controller="AppController as app">
+  <div class="preloader loading" ng-hide="app.loaded">
+    <span class="slice"></span>
+    <span class="slice"></span>
+    <span class="slice"></span>
+    <span class="slice"></span>
+    <span class="slice"></span>
+    <span class="slice"></span>
+  </div>
+  <div class="demo-wrap" ng-cloak>
+    <div id="header_wrap" class="outer">
+      <header class="inner">
+        <div class="social">
+          <span class='st_facebook' displayText='Facebook'></span>
+          <span class='st_twitter' displayText='Tweet'></span>
+          <span class='st_linkedin' displayText='LinkedIn'></span>
+          <span class='st_pinterest' displayText='Pinterest'></span>
+          <span class='st_email' displayText='Email'></span>
+        </div>
+        <a id="forkme_banner" href="https://github.com/kevinchappell/ng-i18n">{{ 'viewOnGithub' | i18n }}</a>
+        <h1 id="project_title">ng-i18n</h1>
+        <h2 id="project_tagline">{{ 'text.moduleDesc' | i18n }}</h2>
+        <section id="downloads">
+          <a class="zip_download_link" href="https://github.com/kevinchappell/ng-i18n/zipball/master">Download this project as a .zip file</a>
+          <a class="tar_download_link" href="https://github.com/kevinchappell/ng-i18n/tarball/master">Download this project as a tar.gz file</a>
+        </section>
+      </header>
+    </div>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <lang-select></lang-select>
+        <p class="badges">
+          <a href="https://codeclimate.com/github/kevinchappell/ng-i18n"><img src="https://codeclimate.com/github/kevinchappell/ng-i18n/badges/gpa.svg" alt="Code Climate">
+          </a>
+        </p>
+        <h1><a id="ng-i18n" class="anchor" href="#ng-i18n" aria-hidden="true"><span class="octicon octicon-link"></span></a>{{ 'about' | i18n }}</h1>
+        <p>{{ 'text.moduleDescLong' | i18n }}</p>
+        <h3>{{ 'usage' | i18n }}</h3>
+        <p>{{ 'usage.intro' | i18n }}</p>
+        <h4>{{ 'label.setup' | i18n }}</h4>
+        <pre><code>
+angular.module('app', [
+  'ngI18n',
+  'ngI18nLangSelect'
+])
+
+.config(function(I18NProvider) {
+    var i18nConfig = {
+      langsDir: 'assets/lang/',
+      langs: [{
+        locale: 'en-us',
+        flag: 'us',
+        name: 'English'
+      }, {
+        locale: 'pt-pt',
+        flag: 'pt',
+        name: 'Portuguese'
+      }]
+    };
+    I18NProvider.config(i18nConfig);
+  })
+      </code></pre>
+        <h4>{{  'label.filter' | i18n }}</h4>
+        <pre><code><span class="pun">{{</span> 'keyInLanguageFile' | i18n <span class="pun">}}</span></code></pre>
+        <fieldset>
+          <legend>{{ 'label.example' | i18n }}</legend>
+          <h5>{{ 'label.filterWVariable' | i18n}}</h5>
+          <pre><code><span class="pun">{{</span> 'args.example' | i18n:app.hotdogCount <span class="pun">}}</span></code></pre>
+          <em>{{ 'text.stringInFile' | i18n }}:</em>
+          <pre><code>args.example = I just ate {count} hot dogs</code></pre>
+          <em>{{ 'label.outputs' | i18n }}:</em>
+          <p>{{ 'args.example' | i18n:app.hotdogCount }}</p>
+          <h5>{{ 'label.filterWLiveVariable' | i18n}}</h5>
+          <p>{{ 'args.example.2' | i18n:app.secondsSinceOpen }}</p>
+          <h5>{{ 'label.filterWNamedVariable' | i18n}}</h5>
+          <pre><code><span class="pun">{{</span> 'args.example.3' | i18n:{ person1:'Kevin', person2: 'Jessica' } <span class="pun">}}</span></code></pre>
+          <em>{{ 'text.stringInFile' | i18n }}:</em>
+          <pre><code>args.example.3 = {{ 'args.example.3' | i18n:{ person1:'{person1}', person2: '{person2}' } }}</code></pre>
+          <em>{{ 'label.outputs' | i18n }}:</em>
+          <p>{{ 'args.example.3' | i18n:{ person1:'Kevin', person2: 'Jessica' } }}</p>
+        </fieldset>
+        <h4>{{  'label.directive' | i18n }}</h4>
+        <p>{{ 'text.aboutDirective' | i18n }}</p>
+        <pre><code><span class="pun"><</span>ng-i18n key="theKey" foo="bar" baz="qux"<span class="pun">></span><span class="pun"><</span>/ng-i18n<span class="pun">></span></code></pre>
+        <fieldset>
+          <legend>{{ 'label.example' | i18n }}</legend>
+          <em>{{ 'label.directiveWNamedVariables' | i18n }}</em>
+          <p>
+            <input type="text" ng-model="app.yourName" placeholder="{{ 'input.yourNamePlaceholder' | i18n }}">
+          </p>
+          <p>
+            <ng-i18n key="named.variables.example" person="{{app.yourName}}" date="{{app.date()}}"></ng-i18n>
+          </p>
+          <em>{{ 'text.directiveNotice' | i18n }}</em>
+        </fieldset>
+      </section>
+    </div>
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <div class="donate-plea">
+          <p> {{ 'text.donate' | i18n }}</p>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="2SE6VQJFAQDK8">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          </form>
+        </div>
+        <p class="copyright" ng-bind-html="app.maintainedBy | i18n"></p>
+        <p>{{ 'publishedWith' | i18n }}</p>
+      </footer>
+    </div>
+  </div>
+  <script type="text/javascript" src="//code.angularjs.org/1.4.1/angular.min.js"></script>
+  <script type="text/javascript" src="//code.angularjs.org/1.4.1/angular-sanitize.min.js"></script>
+  <script type="text/javascript" src="assets/ng-i18n.min.js"></script>
+  <script type="text/javascript" src="assets/demo.js"></script>
+</body>
+
+</html>
