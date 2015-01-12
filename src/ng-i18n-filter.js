@@ -1,7 +1,4 @@
-angular.module('ng-i18n.filter', [])
-
-.filter('i18n', function(I18N) {
-  'use strict';
+ngI18n.filter('i18n', ['I18N', function(I18N) {
 
   /**
    * Retrieves translation for a given key
@@ -10,14 +7,10 @@ angular.module('ng-i18n.filter', [])
    * @return {String}         Translated string
    */
   return function(key, args) {
+    // console.log();
     if (!key) {
       return;
     }
-    //TODO:
-    // `args` should be able to be dynamic
-    key = I18N.get(key).replace(/\{[^\}]+?\}/g, args);
-    return key;
+    return I18N.get(key).replace(/\{[^\}]+?\}/g, args);
   };
-})
-
-;
+}]);
