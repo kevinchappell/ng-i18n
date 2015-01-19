@@ -1,4 +1,4 @@
-ngI18n.directive('ngI18n', ['$parse', '$filter', 'I18N', function($parse, $filter, I18N) {
+ngI18n.directive('ngI18n', ['I18N', function(I18N) {
 
   return {
     restrict: 'E',
