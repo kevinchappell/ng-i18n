@@ -7,7 +7,6 @@ ngI18n.filter('i18n', ['I18N', function(I18N) {
    * @return {String}         Translated string
    */
   return function(key, args) {
-    // console.log();
     if (!key) {
       return;
     }
