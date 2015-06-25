@@ -3,7 +3,7 @@
 	"version": "0.2.5",
 	"main": [
     "vendor/ng-i18n.js",
-    "vendor/ng-i18n.min.js",
+    "vendor/ng-i18n.min.js"
   ],
 	"description": "Add internationalization support for a variety of languages for your site or app with this easy to use module.",
 	"authors": [
@@ -16,7 +16,7 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"angular": "~1.3.8",
+		"angular": "~1.3.8"
 	},
 	"moduleType": [
     "angularjs"
