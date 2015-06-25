@@ -1,9 +1,10 @@
 {
 	"name": "ng-i18n",
-	"version": "0.2.5",
+	"version": "0.2.6",
 	"main": [
-    "vendor/ng-i18n.js",
-    "vendor/ng-i18n.min.js"
+    "dist/ng-i18n.js",
+    "dist/ng-i18n.min.js",
+    "dist/ng-i18n.min.js.gz"
   ],
 	"description": "Add internationalization support for a variety of languages for your site or app with this easy to use module.",
 	"authors": [
