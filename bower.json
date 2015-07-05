@@ -1,25 +1,30 @@
 {
-  "name": "ng-i18n",
-  "version": "1.0.0",
-  "main": [
-    "dist/*"
-  ],
-  "description": "Add internationalization support for a variety of languages for your site or app with this easy to use module.",
-  "authors": [
-    "Kevin Chappell <kevin.b.chappell@gmail.com>"
-  ],
-  "keywords": [
-    "i18n",
-    "translate",
-    "language"
-  ],
-  "license": "MIT",
-  "moduleType": [
-    "angularjs"
-  ],
-  "ignore": [
-    "src",
-    "test",
-    "node_modules"
-  ]
+	"name": "ng-i18n",
+	"version": "1.0.0",
+	"main": [
+		"dist/*"
+	],
+	"description": "Add internationalization support for a variety of languages for your site or app with this easy to use module.",
+	"authors": [
+		"Kevin Chappell <kevin.b.chappell@gmail.com>"
+	],
+	"keywords": [
+		"i18n",
+		"translate",
+		"language"
+	],
+	"license": "MIT",
+	"moduleType": [
+		"angularjs"
+	],
+	"ignore": [
+		"**/.*",
+		"gulpfile.js",
+		"karma.conf.js",
+		"package.json",
+		"params.json",
+		"src",
+		"test",
+		"node_modules"
+	]
 }
