@@ -1,6 +1,8 @@
 [![Code Climate](https://codeclimate.com/github/kevinchappell/ng-i18n/badges/gpa.svg)](https://codeclimate.com/github/kevinchappell/ng-i18n)
 # ng-i18n #
 
+[![Join the chat at https://gitter.im/kevinchappell/ng-i18n](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/kevinchappell/ng-i18n?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A module for easy internationalization of AngularJS webapps.
 
 ## [Demo and Usage](http://kevinchappell.github.io/ng-i18n/)
