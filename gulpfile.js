@@ -96,6 +96,10 @@ gulp.task('lint', function() {
 gulp.task('js', function() {
 	return gulp.src(files.js)
 		.pipe(concat('ng-i18n.js'))
+		.pipe(header(banner, {
+			pkg: pkg,
+			now: new Date()
+		}))
 		.pipe(gulp.dest('dist/'))
 		.pipe(ugly())
 		.pipe(header(banner, {
