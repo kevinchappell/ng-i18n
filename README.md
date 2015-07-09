@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/kevinchappell/ng-i18n/badges/gpa.svg)](https://codeclimate.com/github/kevinchappell/ng-i18n)
+[![Travis-CI](https://travis-ci.org/kevinchappell/ng-i18n.svg)](https://travis-ci.org/kevinchappell/ng-i18n)
 # ng-i18n #
 
 A module for easy internationalization of AngularJS webapps.
