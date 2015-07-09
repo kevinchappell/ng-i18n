@@ -7,17 +7,5 @@ addons:
     repo_token: cc2b7264e6f629ae268c6ed2f0959fb8cecc8e1a6f6e4dd2e4247a379a1c0ec5
 
 before_install:
-  - npm install -qg gulp-cli karma-cli codeclimate-test-reporter
-
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-
-after_script:
-  - if [ "$TEST_SCOPE" == "" ]; then cat build/coverage/report/lcov.info | codeclimate; fi
-
-env:
-  - TEST_SCOPE=
-  - TEST_SCOPE=angular_1.2.x
-  - TEST_SCOPE=angular_1.3.x
-  - TEST_SCOPE=angular_1.4.x
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
