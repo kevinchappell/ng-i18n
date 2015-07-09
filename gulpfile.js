@@ -11,6 +11,7 @@ var gulp = require('gulp'),
 	cssmin = require('gulp-cssmin'),
 	gzip = require('gulp-gzip'),
 	karma = require('gulp-karma'),
+	istanbul = require('gulp-istanbul'),
 	pkg = require('./package.json'),
 	git = require('gulp-git'),
 	bump = require('gulp-bump'),
@@ -74,8 +75,8 @@ gulp.task('css', function() {
 
 gulp.task('karma', function() {
 	var testFiles = files.karma.concat(files.js);
-	testFiles = testFiles.concat(files.test);
-	console.log(testFiles);
+			testFiles = testFiles.concat(files.test);
+
 	return gulp.src(testFiles)
 		.pipe(karma({
 			configFile: 'karma.conf.js',
@@ -85,6 +86,26 @@ gulp.task('karma', function() {
 			// Make sure failed tests cause gulp to exit non-zero
 			throw err;
 		});
+});
+
+
+gulp.task('test', function() {
+	var testFiles = files.karma.concat(files.js);
+	testFiles = testFiles.concat(files.test);
+	return gulp.src(files.js)
+		.pipe(istanbul({includeUntested: true})) // Covering files
+		.pipe(istanbul.hookRequire()) // Force `require` to return covered files
+		.on('finish', function() {
+			return gulp.src(testFiles)
+				.pipe(karma({
+					configFile: 'karma.conf.js'
+				}))
+				.pipe(istanbul.writeReports('coverage'));
+		})
+	.on('error', function(err) {
+		// Make sure failed tests cause gulp to exit non-zero
+		throw err;
+	});
 });
 
 gulp.task('lint', function() {
@@ -119,7 +140,7 @@ gulp.task('js', function() {
 gulp.task('serve', function() {
 	bsync.init({
 		server: {
-			baseDir: "./demo"
+			baseDir: './demo'
 		}
 	});
 });

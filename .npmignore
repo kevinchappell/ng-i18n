@@ -1,0 +1,17 @@
+/demo/
+/src/
+/test/
+/.bowerrc
+/.editorconfig
+/.jshintrc
+/.travis.yml
+/bower.json
+/*.js
+/*.png
+/coverage/
+
+# IntelliJ files
+.idea
+*.iml
+# Eclipse plugins
+/atlassian-ide-plugin.xml
