@@ -16,7 +16,7 @@ angular.module('app', [
 			}, {
 				locale: 'pt-pt',
 				flag: 'pt',
-				name: 'Português'
+				name: 'Portuguese'
 			}]
 		};
 		I18NProvider.config(i18nConfig);
@@ -67,11 +67,3 @@ angular.module('ngI18nLangSelect', ['ngI18n'])
 			});
 		};
 	});
-
-// Google Analytics
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-try {
-	var pageTracker = _gat._getTracker("UA-4784386-24");
-	pageTracker._trackPageview();
-} catch (err) {}
