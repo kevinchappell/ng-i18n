@@ -11,7 +11,4 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 
 env:
-  - TEST_SCOPE=
-  - TEST_SCOPE=angular_1.2.x
-  - TEST_SCOPE=angular_1.3.x
   - TEST_SCOPE=angular_1.4.x
