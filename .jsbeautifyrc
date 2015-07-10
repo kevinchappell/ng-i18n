@@ -3,7 +3,7 @@
     "indent_size": 2
   },
   "css": {
-    "indent_size": 1,
+    "indent_size": 2,
     "indent_char": " ",
     "indent_with_tabs": true,
     "newline-between-rules": true,
