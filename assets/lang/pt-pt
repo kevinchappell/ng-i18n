@@ -1,0 +1,33 @@
+#__locale__# = pt-pt
+#__name__# = português
+
+about = Sobre este módulo
+text.moduleDesc = Um módulo para facilitar a internacionalização das webapps AngularJS.
+text.moduleDescLong = ng-i18n é um module do angular que faz a conversão de seu app angular em um app de multi linguagem fácil. Usar simplesmente definir seus idiomas e adicionar um seletor. As traduções são manipuladas através de filtros e directivas e leve pode ter argumentos.
+args = Com argumentos em seus filtros e diretivas permite que você faça traduções com variáveis. Por exemplo:
+args.example = Já comi {count} cachorros-quentes
+args.example.2 = Você abriu este demo {seconds} segundos atrás.
+args.example.3 = {person1} deu {person2} quatro flores
+Language = Idioma
+usage = Uso
+viewOnGithub = Veja no Github
+maintainedBy = ng-i18n mantidas por <a href="https://twitter.com/kevinchappell">Kevin Chappell</a>
+publishedWith = Publicado com GitHub páginas
+page.title = Leve internacionalização para qualquer projeto
+usage.intro = Neste exemplo, o modulo esta configurado como o codigo embaixo. Você pode adicionar idomos se que existo no langDir definado.
+named.variables.example = Olá {person}, a data de hoje é {date}
+input.yourNamePlaceholder = Escreva seu nome aqui
+label.directiveWNamedVariables = Directive com variáveis nomeadas
+label.filterWVariable = Filtro com variável
+label.filterWLiveVariable = Filtro com variáveis usando dados ao vivo
+label.filterWNamedVariable = Filtro com variáveis nomeadas
+text.aboutDirective = A Directiva de i18n pode ser usada em outras directivas e passou várias variáveis nomeadas
+text.directiveNotice = Observe que o formato de data mudar para coincidir com a localidade do idioma.
+label.example = Exemplo
+label.setup = Instalação
+label.filter = Filtro
+label.directive = Directiva
+text.stringInFile = String no ficheiro de idioma
+label.outputs = Outputs
+toast.loaded = {language} foi carregado
+text.donate = Se ng-i18n ajudou você em seu projeto, por favor, considere uma doação. Todos os lucros vão para a compra de café.
