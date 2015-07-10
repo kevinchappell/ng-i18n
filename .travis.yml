@@ -17,9 +17,4 @@ env:
   - TEST_SCOPE=angular_1.4.x
 
 notifications:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/b3fad143b541daf56e89
-    on_success: change
-    on_failure: always
-    on_start: false
+  webhooks: https://webhooks.gitter.im/e/b3fad143b541daf56e89
