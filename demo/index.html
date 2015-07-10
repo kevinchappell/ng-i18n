@@ -142,6 +142,15 @@ angular.module('app', [
   <script type="text/javascript" src="//code.angularjs.org/1.4.1/angular-sanitize.min.js"></script>
   <script type="text/javascript" src="assets/ng-i18n.min.js"></script>
   <script type="text/javascript" src="assets/demo.js"></script>
+  <script>
+  // Google Analytics
+  var gaJsHost = (('https:' === document.location.protocol) ? 'https://ssl.' : 'http://www.');
+  document.write(unescape('%3Cscript src="' + gaJsHost + 'google-analytics.com/ga.js" type="text/javascript"%3E%3C/script%3E'));
+  try {
+    var pageTracker = _gat._getTracker('UA-4784386-24');
+    pageTracker._trackPageview();
+  } catch (err) {}
+  </script>
 </body>
 
 </html>

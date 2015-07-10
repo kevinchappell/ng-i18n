@@ -1,6 +1,6 @@
 /*
 ng-i18n - git@github.com:kevinchappell/ng-i18n.git
-Version: 1.1.0
+Version: 1.1.1
 Author: Kevin Chappell <kevin.b.chappell@gmail.com>
 */
 angular.module('ngI18n', [])
