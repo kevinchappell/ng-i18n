@@ -13,16 +13,6 @@ module.exports = function(config) {
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
 		frameworks: ['jasmine'],
 
-		// list of files / patterns to load in the browser
-		// files: [
-		// 	'node_modules/angular/angular.js',
-		// 	'node_modules/angular-mocks/angular-mocks.js',
-		// 	'src/ng-i18n-provider.js',
-		// 	'src/ng-i18n-directive.js',
-		// 	'src/ng-i18n-filter.js',
-		// 	'test/**/*.spec.js'
-		// ],
-
 		// list of files to exclude
 		exclude: [],
 
@@ -65,8 +55,11 @@ module.exports = function(config) {
 
 		// start these browsers
 		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-		// browsers: ['Chrome', 'Firefox'],
-		browsers: ['Firefox'],
+		// browsers: ['Chrome', 'Firefox', 'PhantomJS'],
+		browsers: ['Firefox', 'PhantomJS'], // for Travis
+		// browsers: ['Firefox'],
+		// browsers: ['Chrome'],
+		// browsers: ['PhantomJS'],
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits

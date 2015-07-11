@@ -11,7 +11,7 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 
 after_script:
-  - codeclimate-test-reporter < coverage/lcov.info
+  - codeclimate-test-reporter < coverage/**/lcov.info
 
 env:
   - TEST_SCOPE=angular_1.4.x

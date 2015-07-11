@@ -66,22 +66,6 @@ angular.module('ngI18n', [])
       };
 
       /**
-       * Write to our language file
-       * TODO - finish
-       * @param  {String} translationMap
-       * @return {String}
-       */
-      utils.toFile = function(translationMap) {
-        var raw = [];
-        for (var line in translationMap) {
-          if (translationMap.hasOwnProperty(line)) {
-            raw.push(line + ' = ' + translationMap[line]);
-          }
-        }
-        return raw.join('\n');
-      };
-
-      /**
        * turn the raw text from loadLang() into
        * @param  {string} rawText
        */
@@ -99,6 +83,22 @@ angular.module('ngI18n', [])
           });
         }
         $rootScope.lang = locale;
+      };
+
+      /**
+       * Escape AngularJS filter syntax
+       * @param  {string} str special characters
+       * @return {string}     escaped special characters
+       */
+      utils.makeSafe = function(str) {
+        var mapObj = {
+          '{': '\\{',
+          '}': '\\}',
+          '|': '\\|'
+        };
+        return str.replace(/\{|\}|\|/g, function(matched) {
+          return mapObj[matched];
+        });
       };
 
       /**
@@ -144,22 +144,6 @@ angular.module('ngI18n', [])
       };
 
       /**
-       * Escape AngularJS filter syntax
-       * @param  {string} str special characters
-       * @return {string}     escaped special characters
-       */
-      function makeSafe(str) {
-        var mapObj = {
-          '{': '\\{',
-          '}': '\\}',
-          '|': '\\|'
-        };
-        return str.replace(/\{|\}|\|/g, function(matched) {
-          return mapObj[matched];
-        });
-      }
-
-      /**
        * Parse arguments for the Directive and Filter
        * @param  {string} key  the key we use to lookup our translation
        * @param  {multi}  args  string, number or object containing our arguments
@@ -180,7 +164,7 @@ angular.module('ngI18n', [])
           angular.forEach(tokens, function(val) {
             token = val.substring(1, val.length - 1);
             tokenVal = args[token];
-            value = value.replace(new RegExp(makeSafe(val), 'g'), tokenVal || '');
+            value = value.replace(new RegExp(utils.makeSafe(val), 'g'), tokenVal || '');
           });
         } else {
           value = value.replace(/\{[^\}]+?\}/g, args);

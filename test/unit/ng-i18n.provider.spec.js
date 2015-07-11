@@ -23,9 +23,14 @@ describe('Localization Provider: I18N', function() {
 	});
 
 	// test .config()
-	it('tests the providers internal function', function() {
+	it('should return our configured locale', function() {
 		var i18nConfig = i18nProvider.config();
 		expect(i18nConfig.default.locale).toBe('en-us');
+	});
+
+	// test .getCurrent()
+	it('should return our current locale', function() {
+		expect(I18N.getCurrent()).toBe('en-us');
 	});
 
 	// test .getLangs()
@@ -60,6 +65,31 @@ describe('Localization Provider: I18N', function() {
 		var response = I18N.get('helloworld');
 
 		expect(response).toBe('Hello World!');
+	});
+
+	describe('processFile', function() {
+		var mockResponse = {
+			data : 'key = value'
+		};
+
+		beforeEach(function() {
+			spyOn(I18N.utils, 'fromFile').and.returnValue('AngularJS {adjective}');
+		});
+
+		it("should call I18N.fromFile", function() {
+			I18N.utils.processFile(mockResponse);
+			expect(I18N.utils.fromFile).toHaveBeenCalledWith(mockResponse.data);
+		});
+
+		it("should have no loaded languages until a file is processed", function() {
+			expect(I18N.loaded.length).toBe(0);
+		});
+
+		it("should have have one loaded language after a file is processed", function() {
+			I18N.utils.processFile(mockResponse);
+			expect(I18N.loaded.length).toBe(1);
+		});
+
 	});
 
 	describe('parseArgs', function() {
