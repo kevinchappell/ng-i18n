@@ -16,36 +16,25 @@ module.exports = function(config) {
     files: [
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'dist/ng-i18n.js',
+      'src/ng-i18n-provider.js',
+      'src/ng-i18n-filter.js',
+      'src/ng-i18n-directive.js',
       'test/**/*.spec.js'
     ],
 
-    // list of files to exclude
-    exclude: [],
+    reporters: ['progress', 'coverage'],
 
-    coverageReporter: {
-      type: 'lcov',
-      dir: 'coverage/',
-      instrumenterOptions: {
-        istanbul: {
-          noCompact: true
-        }
-      }
-    },
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      // source files, that you wanna generate coverage for
-      // do not include tests or libraries
-      // (these files will be instrumented by Istanbul)
       'src/**/*.js': ['coverage']
     },
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    coverageReporter: {
+      type: 'lcovonly',
+      dir: 'coverage/',
+      instrumenterOptions: {
+        istanbul: { noCompact: true }
+      }
+    },
 
     // web server port
     port: 9876,
@@ -62,11 +51,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    // browsers: ['Chrome', 'Firefox', 'PhantomJS'],
-    browsers: ['Firefox', 'PhantomJS'], // for Travis
-    // browsers: ['Firefox'],
-    // browsers: ['Chrome'],
-    //browsers: ['PhantomJS'],
+    browsers: ['Firefox'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
