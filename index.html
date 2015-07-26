@@ -23,14 +23,7 @@
 </head>
 
 <body ng-controller="AppController as app">
-  <div class="preloader loading" ng-hide="app.loaded">
-    <span class="slice"></span>
-    <span class="slice"></span>
-    <span class="slice"></span>
-    <span class="slice"></span>
-    <span class="slice"></span>
-    <span class="slice"></span>
-  </div>
+  <span class="loading" ng-hide="app.loaded" ></span>
   <div class="demo-wrap" ng-cloak>
     <div id="header_wrap" class="outer">
       <header class="inner">
