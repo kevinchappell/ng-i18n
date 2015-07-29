@@ -76,16 +76,16 @@ describe('Localization Provider: I18N', function() {
       spyOn(I18N.utils, 'fromFile').and.returnValue('AngularJS {adjective}');
     });
 
-    it("should call I18N.utils.fromFile", function() {
+    it('should call I18N.utils.fromFile', function() {
       I18N.utils.processFile(mockResponse);
       expect(I18N.utils.fromFile).toHaveBeenCalledWith(mockResponse.data);
     });
 
-    it("should have no loaded languages until a file is processed", function() {
+    it('should have no loaded languages until a file is processed', function() {
       expect(I18N.loaded.length).toBe(0);
     });
 
-    it("should have have one loaded language after a file is processed", function() {
+    it('should have have one loaded language after a file is processed', function() {
       I18N.utils.processFile(mockResponse);
       expect(I18N.loaded.length).toBe(1);
     });
@@ -97,12 +97,12 @@ describe('Localization Provider: I18N', function() {
       spyOn(I18N, 'get').and.returnValue('AngularJS {adjective}');
     });
 
-    it("should call I18N.get", function() {
+    it('should call I18N.get', function() {
       I18N.parseArgs('key');
       expect(I18N.get).toHaveBeenCalledWith('key');
     });
 
-    it("should substitute token", function() {
+    it('should substitute token', function() {
       var value = I18N.parseArgs('key', 'Rocks!');
       expect(value).toBe('AngularJS Rocks!');
     });
