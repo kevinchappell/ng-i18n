@@ -1,22 +1,21 @@
 'use strict';
 
-var gulp = require('gulp'),
-  bsync = require('browser-sync'),
-  jshint = require('gulp-jshint'),
-  concat = require('gulp-concat'),
-  ugly = require('gulp-uglify'),
-  header = require('gulp-header'),
-  sass = require('gulp-sass'),
-  autoprefixer = require('gulp-autoprefixer'),
-  cssmin = require('gulp-cssmin'),
-  gzip = require('gulp-gzip'),
-  pkg = require('./package.json'),
-  git = require('gulp-git'),
-  bump = require('gulp-bump'),
-  filter = require('gulp-filter'),
-  tagVersion = require('gulp-tag-version'),
-  karma = require('karma').server,
-  reload = bsync.reload;
+var gulp         = require('gulp'),
+    karma        = require('karma'),
+    git          = require('gulp-git'),
+    bump         = require('gulp-bump'),
+    sass         = require('gulp-sass'),
+    gzip         = require('gulp-gzip'),
+    cssmin       = require('gulp-cssmin'),
+    jshint       = require('gulp-jshint'),
+    concat       = require('gulp-concat'),
+    ugly         = require('gulp-uglify'),
+    header       = require('gulp-header'),
+    filter       = require('gulp-filter'),
+    bsync        = require('browser-sync'),
+    pkg          = require('./package.json'),
+    tagVersion   = require('gulp-tag-version'),
+    autoprefixer = require('gulp-autoprefixer');
 
 var files = {
   karma: [
@@ -37,7 +36,6 @@ var files = {
   ]
 };
 
-
 var banner = [
   '/*',
   '<%= pkg.name %> - <%= pkg.repository.url %>',
@@ -49,7 +47,7 @@ var banner = [
 
 gulp.task('watch', function() {
   gulp.watch(['src/**/*.js', 'demo/assets/demo.js'], ['lint', 'js']);
-  gulp.watch('demo/index.html', reload);
+  gulp.watch('demo/index.html', bsync.reload);
   gulp.watch(files.sass, ['css']);
 });
 
@@ -66,20 +64,20 @@ gulp.task('css', function() {
       now: new Date()
     }))
     .pipe(gulp.dest('demo/assets'))
-    .pipe(reload({
+    .pipe(bsync.reload({
       stream: true
     }));
 
 });
 
 gulp.task('karma', function (done) {
-  karma.start({
-    configFile: __dirname + '/karma.conf.js',
+  new karma.Server.start({
+    configFile: __dirname + '/karma.conf.js'
   }, done);
 });
 
 gulp.task('test', function (done) {
-  karma.start({
+  new karma.Server.start({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done);
@@ -109,7 +107,7 @@ gulp.task('js', function() {
     .pipe(gulp.dest('demo/assets'))
     .pipe(gzip())
     .pipe(gulp.dest('dist/'))
-    .pipe(reload({
+    .pipe(bsync.reload({
       stream: true
     }));
 });
@@ -150,6 +148,12 @@ gulp.task('release', function() {
   return increment('major');
 });
 
+// Deploy the demo
+gulp.task('deploy', function(){
+  git.exec({args : 'subtree push --prefix demo origin gh-pages'}, function (err) {
+    console.error('There was an error deploying to GitHub Pages\n', err);
+  });
+});
 
 
 gulp.task('default', ['js', 'watch', 'karma']);

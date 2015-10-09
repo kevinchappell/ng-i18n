@@ -2,12 +2,15 @@ angular.module('ngI18n', [])
   .provider('I18N', function() {
     'use strict';
 
+    // Example configuration
     var config = {
+      // local or remote directory containing language files
       langsDir: 'lang/',
       default: {
         locale: 'en-us',
         name: 'English'
       },
+      // locale property should match language filenames
       langs: [{
         locale: 'en-us',
         name: 'English'
@@ -28,7 +31,7 @@ angular.module('ngI18n', [])
     };
 
     /**
-     * Angular function for instantiating our Provider
+     * Angular function for instantiating the Provider
      */
     this.$get = ['$rootScope', '$http', function i18nService($rootScope, $http) {
       return new I18N($rootScope, $http);
@@ -37,7 +40,7 @@ angular.module('ngI18n', [])
     function I18N($rootScope, $http) {
       var i18n = this,
         langs = {},
-        current = $rootScope.lang || sessionStorage.getItem('locale') || 'en-us',
+        current = $rootScope.lang || sessionStorage.getItem('locale') || config.default.locale,
         localeKey = '#__locale__#',
         nameKey = '#__name__#',
         utils = {};
@@ -46,7 +49,7 @@ angular.module('ngI18n', [])
 
       /**
        * Turn raw text from the language files into fancy JSON
-       * @param  {String} rawText
+       * @param  {string} rawText
        * @return {object}
        */
       utils.fromFile = function(rawText) {
@@ -130,8 +133,8 @@ angular.module('ngI18n', [])
 
       /**
        * get a string from a loaded language file
-       * @param  {String} key  - the key for the string we are trying to retrieve
-       * @return {String}      - correct language string
+       * @param  {string} key  - the key for the string we are trying to retrieve
+       * @return {string}      - correct language string
        */
       i18n.get = function(key) {
         var string = (langs[current] && langs[current][key]) || (langs['en-us'] && langs['en-us'][key]) || key;
@@ -181,7 +184,7 @@ angular.module('ngI18n', [])
             return cb(response);
           }
         }, function(reason) {
-          console.error('Failed: ' + reason);
+          console.error('Failed to set language: ' + reason);
         });
       };
 
