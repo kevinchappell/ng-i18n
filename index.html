@@ -65,14 +65,18 @@ angular.module('app', [
 
 .config(function(I18NProvider) {
     var i18nConfig = {
+      // local or remote directory containing language files
       langsDir: 'assets/lang/',
+      default: {
+        locale: 'en-us',
+        name: 'English'
+      },
+      // locale property should match language filenames
       langs: [{
         locale: 'en-us',
-        flag: 'us',
         name: 'English'
       }, {
         locale: 'pt-pt',
-        flag: 'pt',
         name: 'Portuguese'
       }]
     };
