@@ -2,6 +2,7 @@
 [![Travis-CI](https://travis-ci.org/kevinchappell/ng-i18n.svg)](https://travis-ci.org/kevinchappell/ng-i18n)
 [![Test Coverage](https://codeclimate.com/github/kevinchappell/ng-i18n/badges/coverage.svg)](https://codeclimate.com/github/kevinchappell/ng-i18n/coverage)
 # ng-i18n #
+<em>v1.1.3</em>
 
 **Easy internationalization for *your* AngularJS webapp.**
 
